@@ -17,7 +17,7 @@ SpPolysDF@data[grep("IZ",SpPolysDF$INTZONE_NAME), 10] <- paste(SpPolysDF@data[gr
 
 #Read the data zone indicator data
 indDta <- read_excel("Q:/CMaps/datazone data for maps.xlsx")
-SpPolysDF@data <- left_join(SpPolysDF@data, indDta[c(1,4,5,6,7,8,9)], by = c("DZ_CODE" = "Datazone"))
+SpPolysDF@data <- left_join(SpPolysDF@data, indDta[c(1,4,5,6,7,8,9)], by = c("group" = "Datazone"))
   
 #save
 saveRDS(SpPolysDF, file = "Q:/CMaps/Shapes.rds")
