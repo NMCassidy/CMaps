@@ -1,11 +1,11 @@
 library(shiny)
 library(shinythemes)
 
-shinyUI(fluidPage(theme = shinytheme("readable"),
+shinyUI(fluidPage(theme = shinytheme("united"),
               # titlePanel("CPOP Mapping Feature"), 
   conditionalPanel("input.CPP != 'Select a CPP'",fluidRow(
-    splitLayout(cellWidths = c("33%", "33%", "34%"),
-      h5("Percentage of Children in Poverty", style = "text-align:center; margin-top:0"), h5("S4 Average Tariff Score", style = "text-align:center; margin-top:0"), h5("% School Leavers Entering Positive Destinations", style = "text-align:center; margin-top:0"))
+    splitLayout(cellWidths = c("33%", "33%", "33%"),
+      h5("Percentage of Children in Poverty", style = "text-align:center; margin-top:2; margin-bottom:0"), h5("S4 Average Tariff Score", style = "text-align:center; margin-top:2; margin-bottom:0"), h5("% School Leavers Entering Positive Destinations", style = "text-align:center; margin-top:2; margin-bottom:0"))
   )
   )
   ,   fluidRow(
@@ -13,8 +13,8 @@ shinyUI(fluidPage(theme = shinytheme("readable"),
            leafletOutput("newplot"), leafletOutput("newplot2"), leafletOutput("newplot3")))
         , 
     conditionalPanel("input.CPP != 'Select a CPP'",fluidRow(
-    splitLayout(cellWidths = c("33%", "33%", "34%"),
-    h5("% Aged 16-64 Receiving Out of Work Benefits", style = "text-align:center; margin-top: 3; margin-bottom:1"), h5("Number of SIMD Crimes per 10,000 People", style = "text-align:center; margin-top:3; margin-bottom:1"), h5("Emergency Admissions (65+) per 100,000 People", style = "text-align:center; margin-top:3; margin-bottom:1"))
+    splitLayout(cellWidths = c("33%", "33%", "33%"),
+    h5("% Aged 16-64 Receiving Out of Work Benefits", style = "text-align:center; margin-top: 3; margin-bottom:0"), h5("Number of SIMD Crimes per 10,000 People", style = "text-align:center; margin-top:3; margin-bottom:0"), h5("Emergency Admissions (65+) per 100,000 People", style = "text-align:center; margin-top:3; margin-bottom:0"))
   )
     )
   ,  fluidRow(

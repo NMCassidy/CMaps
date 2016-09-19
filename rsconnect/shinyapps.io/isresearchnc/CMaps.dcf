@@ -1,0 +1,10 @@
+name: CMaps
+account: isresearchnc
+server: shinyapps.io
+appId: 126489
+bundleId: 561536
+url: https://isresearchnc.shinyapps.io/CMaps/
+when: 1474293278.50307
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: server2.R
