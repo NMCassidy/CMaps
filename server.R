@@ -11,12 +11,12 @@ shinyServer(
     })
     
     clrs<-brewer.pal(7, "RdYlGn")
-    povPal <- colorBin(rev(clrs), SpPolysDF@data$`% of children in poverty`)
-    tariffPal <- colorBin(clrs, SpPolysDF@data$`S4 Average tariff score`)
-    posPal <- colorBin(clrs, SpPolysDF@data$`Percentage of school leavers entering positive destinations`)
-    benPal <- colorBin(rev(clrs), SpPolysDF@data$` % of population (aged 16-64) in receipt of out of work benefits`)
-    crimePal <- colorBin(rev(clrs), SpPolysDF@data$`Number of SIMD crimes per 10,000 of the population`)
-    admisPal <- colorBin(rev(clrs), SpPolysDF@data$`Emergency admissions (65+) per 100,000 population`)
+    povPal <- colorBin(rev(clrs), SpPolysDF@data$povDecs)
+    tariffPal <- colorBin(clrs, SpPolysDF@data$tariffDecs)
+    posPal <- colorBin(clrs, SpPolysDF@data$posDecs)
+    benPal <- colorBin(rev(clrs), SpPolysDF@data$benDecs)
+    crimePal <- colorBin(rev(clrs), SpPolysDF@data$crimeDecs)
+    admisPal <- colorBin(rev(clrs), SpPolysDF@data$admisDecs)
     
     plydata<-reactive({
         desIZ<- which(CPPdta$INTZONE_NAME %in% input$IZ)
@@ -28,42 +28,42 @@ shinyServer(
        p<-leaflet(plydata())%>%
         addTiles()%>%
         addPolygons(smoothFactor = 0.5, weight = 1.5, fillOpacity = 0.7,
-                    layerId = ~group, fillColor = ~povPal(`% of children in poverty`), color = "black")
+                    layerId = ~group, fillColor = ~povPal(`povDecs`), color = "black")
       return(p)
     })
     output$newplot2<-renderLeaflet({
       p<-leaflet(plydata())%>%
         addTiles()%>%
         addPolygons(smoothFactor = 0.5, weight = 1.5, fillOpacity = 0.7,
-                    layerId = ~group, fillColor = ~tariffPal(`S4 Average tariff score`),  color = "black")
+                    layerId = ~group, fillColor = ~tariffPal(`tariffDecs`),  color = "black")
       return(p)
     })
     output$newplot3<-renderLeaflet({
       p<-leaflet(plydata())%>%
         addTiles()%>%
         addPolygons(smoothFactor = 0.5, weight = 1.5, fillOpacity = 0.7,
-                    layerId = ~group, fillColor = ~posPal(`Percentage of school leavers entering positive destinations`), color = "black")
+                    layerId = ~group, fillColor = ~posPal(`posDecs`), color = "black")
       return(p)
     })
     output$newplot4<-renderLeaflet({
       p<-leaflet(plydata())%>%
         addTiles()%>%
         addPolygons(smoothFactor = 0.5, weight = 1.5, fillOpacity = 0.7,
-                    layerId = ~group, fillColor = ~benPal(` % of population (aged 16-64) in receipt of out of work benefits`), color = "black")
+                    layerId = ~group, fillColor = ~benPal(`benDecs`), color = "black")
       return(p)
     })
     output$newplot5<-renderLeaflet({
       p<-leaflet(plydata())%>%
         addTiles()%>%
         addPolygons(smoothFactor = 0.5, weight = 1.5, fillOpacity = 0.7,
-                    layerId = ~group, fillColor = ~crimePal(`Number of SIMD crimes per 10,000 of the population`), color = "black")
+                    layerId = ~group, fillColor = ~crimePal(`crimeDecs`), color = "black")
       return(p)
     })
     output$newplot6<-renderLeaflet({
       p<-leaflet(plydata())%>%
         addTiles()%>%
         addPolygons(smoothFactor = 0.5, weight = 1.5, fillOpacity = 0.7,
-                    layerId = ~group, fillColor = ~admisPal(`Emergency admissions (65+) per 100,000 population`), color = "black")
+                    layerId = ~group, fillColor = ~admisPal(`admisDecs`), color = "black")
       return(p)
     })
     
