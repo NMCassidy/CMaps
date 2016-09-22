@@ -13,10 +13,10 @@ shinyUI(fluidPage(theme = shinytheme("spacelab"),
                                        HTML("
                                             h5 {
                                             height: 1.5vh;
-                                            margin-top:1vh;
+                                            margin-top:0.8vh;
                                             margin-bottom:1vh;
                                             text-align:center;
-                                            font-weight: bold
+                                            font-weight: bold;
                                             }"))),
             #  titlePanel("CPOP Mapping Feature - Select a CPP to View"), 
   conditionalPanel("input.CPP != 'Select a CPP'",fluidRow(
