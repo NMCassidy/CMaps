@@ -1,33 +1,45 @@
 library(shinythemes)
 
-shinyUI(navbarPage(title = "CPOP Mapping Feature",theme = shinytheme("readable"),
-                  
+shinyUI(navbarPage(title = "CPOP Mapping Feature",id = "nav", theme = "bootstrap.css",
     #CSS to make sure that there is no scroll even on smaller screens
-                  tags$head(tags$style("#newplot{height:46vh !important;}",
-                                       "#newplot2{height:46vh !important;}",
-                                       "#newplot3{height:46vh !important;}",
-                                       "#newplot4{height:46vh !important;}",
-                                       "#newplot5{height:46vh !important;}",
-                                       "#newplot6{height:46vh !important;}",
+                  tags$head(tags$style("#newplot{height:39vh !important;border-style: solid;border-width:1px}",
+                                       "#newplot2{height:39vh !important;border-style: solid;border-width:1px}",
+                                       "#newplot3{height:39vh !important;border-style: solid;border-width:1px}",
+                                       "#newplot4{height:39vh !important;border-style: solid;border-width:1px}",
+                                       "#newplot5{height:39vh !important;border-style: solid;border-width:1px}",
+                                       "#newplot6{height:39vh !important;border-style: solid;border-width:1px}",
                                        HTML("
                                             h5 {
                                             height: 1.5vh;
-                                            margin-top:1vh;
+                                            margin-top:0.6vh;
                                             margin-bottom:1vh;
                                             text-align:center;
                                             font-weight: bold
-                                            }"))),
-    tabPanel("Data Zone Level Maps", 
-  conditionalPanel("input.CPP != 'Select a CPP'",fluidRow(
-    splitLayout(cellWidths = c("33%", "33%", "33%"),
+                                            }"))),   
+   tabPanel("Data Zone Level Maps", 
+            fluidPage(
+            absolutePanel(fixed = FALSE,
+                           draggable = FALSE, top = "30px", left = 0, right = 0, bottom = 0,
+                           width = "100%", height = "auto", style = "opacity:1",
+                           tags$style(".well {background-color:white; padding-bottom:0px; height:0vh}"),
+                           wellPanel(
+                              div(class = "row",
+                                              div(class = "span4",style = "display: inline-block; vertical-align: text-top; padding-right:6vh; padding-left:6vh", 
+                                                  selectInput("CPP", h5("Select a CPP"), 
+                                                 c("Select a CPP", unique(CPPdta$council)), selected = "Select a CPP", width = "350px")
+                                                       ),
+                                    div(class = "span4", style = "display: inline-block; vertical-align: text-top; width: 450px; z-index:100",
+                             uiOutput("IZUI")))
+                           )
+             ),
+  conditionalPanel("input.CPP != 'Select a CPP'", div(class = "row-fluid", style = "padding-top:7vh;",
+    fluidRow(splitLayout(cellWidths = c("33%", "33%", "33%"),
       tags$h5("Percentage of Children in Poverty"), h5("S4 Average Tariff Score"), h5("% School Leavers Entering Positive Destinations"))
   )
-  )
   ,
-  fluidRow(
-        splitLayout(cellWidths = c("33%", "33%", "33%"),
+      fluidRow(splitLayout(cellWidths = c("33%", "33%", "33%"),
            leafletOutput("newplot"), leafletOutput("newplot2"), leafletOutput("newplot3")))
-        , 
+        ), 
   hr(style = "margin-bottom:0.3vh; margin-top:0.5vh"),
     conditionalPanel("input.CPP != 'Select a CPP'",fluidRow(
     splitLayout(cellWidths = c("33%", "33%", "33%"),
@@ -36,16 +48,7 @@ shinyUI(navbarPage(title = "CPOP Mapping Feature",theme = shinytheme("readable")
     )
   ,  fluidRow(
      splitLayout(cellWidths = c("33%", "33%", "33%"),
-     leafletOutput("newplot4"), leafletOutput("newplot5"), leafletOutput("newplot6"))),
-     absolutePanel(fixed = FALSE,
-            draggable = FALSE, top = 70, left = "auto", right = 20, bottom = "auto",
-        width = 320, height = "auto", style = "opacity:0.9",
-        tags$style(".well {background-color:azure2;}"),
-     wellPanel(
-       selectInput("CPP", "Select a CPP", 
-       c("Select a CPP", unique(CPPdta$council)), selected = "Select a CPP")
-       ,
-       uiOutput("IZ"))
-     )
-    )
+     leafletOutput("newplot4"), leafletOutput("newplot5"), leafletOutput("newplot6")))
+    ))
+)
 ))

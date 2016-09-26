@@ -4,8 +4,8 @@ require(sp)           #To deal with shapefiles
 shinyServer(
   function(input, output, session){
     
-    output$IZ <- renderUI({
-      opts <- selectInput("IZ", "Select a Community", unique(CPPdta[CPPdta$council == input$CPP, 10]))
+    output$IZUI <- renderUI({
+      selectInput("IZ", h5("Select a Community"), c("Select a Community",unique(CPPdta[CPPdta$council == input$CPP, 10])))
     })
     
     clrs<-brewer.pal(7, "RdYlGn")
