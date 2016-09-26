@@ -8,6 +8,8 @@ shinyUI(navbarPage(title = "CPOP Mapping Feature",id = "nav", theme = "bootstrap
                                        "#newplot4{height:39vh !important;border-style: solid;border-width:1px}",
                                        "#newplot5{height:39vh !important;border-style: solid;border-width:1px}",
                                        "#newplot6{height:39vh !important;border-style: solid;border-width:1px}",
+                                       ".well {background-color:white; padding-bottom:0px; height:0vh;}",
+                                       ".row-fluid {padding-top:7vh;}",
                                        HTML("
                                             h5 {
                                             height: 1.5vh;
@@ -21,34 +23,32 @@ shinyUI(navbarPage(title = "CPOP Mapping Feature",id = "nav", theme = "bootstrap
             absolutePanel(fixed = FALSE,
                            draggable = FALSE, top = "30px", left = 0, right = 0, bottom = 0,
                            width = "100%", height = "auto", style = "opacity:1",
-                           tags$style(".well {background-color:white; padding-bottom:0px; height:0vh}"),
                            wellPanel(
                               div(class = "row",
                                               div(class = "span4",style = "display: inline-block; vertical-align: text-top; padding-right:6vh; padding-left:6vh", 
                                                   selectInput("CPP", h5("Select a CPP"), 
                                                  c("Select a CPP", unique(CPPdta$council)), selected = "Select a CPP", width = "350px")
                                                        ),
-                                    div(class = "span4", style = "display: inline-block; vertical-align: text-top; width: 450px; z-index:100",
+                                    div(class = "span4", style = "display: inline-block; vertical-align: text-top; width: 450px",
                              uiOutput("IZUI")))
                            )
              ),
-  conditionalPanel("input.CPP != 'Select a CPP'", div(class = "row-fluid", style = "padding-top:7vh;",
+  conditionalPanel("input.CPP != 'Select a CPP'", div(class = "row-fluid",
     fluidRow(splitLayout(cellWidths = c("33%", "33%", "33%"),
-      tags$h5("Percentage of Children in Poverty"), h5("S4 Average Tariff Score"), h5("% School Leavers Entering Positive Destinations"))
+      h5("Percentage of Children in Poverty"), h5("S4 Average Tariff Score"), h5("% School Leavers Entering Positive Destinations"))
   )
   ,
       fluidRow(splitLayout(cellWidths = c("33%", "33%", "33%"),
            leafletOutput("newplot"), leafletOutput("newplot2"), leafletOutput("newplot3")))
         ), 
-  hr(style = "margin-bottom:0.3vh; margin-top:0.5vh"),
+  hr(style = "margin-bottom:0.3vh; margin-top:0.5vh")),
     conditionalPanel("input.CPP != 'Select a CPP'",fluidRow(
     splitLayout(cellWidths = c("33%", "33%", "33%"),
     h5("% Aged 16-64 Receiving Out of Work Benefits"), h5("Number of SIMD Crimes per 10,000 People"), h5("Emergency Admissions (65+) per 100,000 People"))
   )
-    )
   ,  fluidRow(
      splitLayout(cellWidths = c("33%", "33%", "33%"),
      leafletOutput("newplot4"), leafletOutput("newplot5"), leafletOutput("newplot6")))
-    ))
+    )
 )
-))
+)))
