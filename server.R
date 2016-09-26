@@ -1,7 +1,5 @@
-require(dplyr)        #Data manipulation
 require(RColorBrewer) #For colour scheme
 require(sp)           #To deal with shapefiles
-library(shiny)
 
 shinyServer(
   function(input, output, session){

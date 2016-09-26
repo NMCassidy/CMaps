@@ -1,6 +1,7 @@
 require(leaflet)      #To make the Maps
 library(readr)
 library(dplyr)
+library(shiny)
 SpPolysDF<-read_rds("Shapes.rds")
 
 CPPdta <- SpPolysDF@data

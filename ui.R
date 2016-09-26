@@ -1,7 +1,6 @@
-library(shiny)
 library(shinythemes)
 
-shinyUI(fluidPage(theme = shinytheme("spacelab"),
+shinyUI(navbarPage(title = "CPOP Mapping Feature",theme = shinytheme("readable"),
                   
     #CSS to make sure that there is no scroll even on smaller screens
                   tags$head(tags$style("#newplot{height:46vh !important;}",
@@ -18,7 +17,7 @@ shinyUI(fluidPage(theme = shinytheme("spacelab"),
                                             text-align:center;
                                             font-weight: bold
                                             }"))),
-            #  titlePanel("CPOP Mapping Feature - Select a CPP to View"), 
+    tabPanel("Data Zone Level Maps", 
   conditionalPanel("input.CPP != 'Select a CPP'",fluidRow(
     splitLayout(cellWidths = c("33%", "33%", "33%"),
       tags$h5("Percentage of Children in Poverty"), h5("S4 Average Tariff Score"), h5("% School Leavers Entering Positive Destinations"))
@@ -38,8 +37,8 @@ shinyUI(fluidPage(theme = shinytheme("spacelab"),
   ,  fluidRow(
      splitLayout(cellWidths = c("33%", "33%", "33%"),
      leafletOutput("newplot4"), leafletOutput("newplot5"), leafletOutput("newplot6"))),
-     absolutePanel(fixed = TRUE,
-            draggable = TRUE, top = 70, left = "auto", right = 20, bottom = "auto",
+     absolutePanel(fixed = FALSE,
+            draggable = FALSE, top = 70, left = "auto", right = 20, bottom = "auto",
         width = 320, height = "auto", style = "opacity:0.9",
         tags$style(".well {background-color:azure2;}"),
      wellPanel(
@@ -48,4 +47,5 @@ shinyUI(fluidPage(theme = shinytheme("spacelab"),
        ,
        uiOutput("IZ"))
      )
+    )
 ))
