@@ -1,8 +1,7 @@
 require(RColorBrewer) #For colour scheme
 require(sp)           #To deal with shapefiles
 
-shinyServer(
-  function(input, output, session){
+server <-  function(input, output, session){
     
     output$IZUI <- renderUI({
       selectInput("IZ", h5("Select a Community"), unique(CPPdta[CPPdta$council == input$CPP, 10]))
@@ -193,4 +192,4 @@ shinyServer(
         })
       })
       
-  })
+  }
