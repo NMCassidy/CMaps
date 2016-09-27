@@ -23,7 +23,8 @@ server <-  function(input, output, session){
     #create the map
     output$newplot<-renderLeaflet({
        p<-leaflet(plydata())%>%
-        addTiles()%>%
+       # addProviderTiles("OpenStreetMap.HOT")%>% #Humanitarian OpenStreetMap if desired
+         addTiles()%>%
         addPolygons(smoothFactor = 0.5, weight = 1.5, fillOpacity = 0.7,
                     layerId = ~group, fillColor = ~povPal(`povDecs`), color = "black") %>%
          zoomControlPosition('bottomleft')
