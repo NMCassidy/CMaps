@@ -192,4 +192,20 @@ server <-  function(input, output, session){
         })
       })
       
+      #Colours for Community Map
+      communityPal <- colorBin(rev(clrs), SpPolysIZ@data$rank_decs)
+      
+      #Subset IZ Data
+      IZPlys <- reactive({
+        sbst <- which(SpPolysIZ@data$council %in% input$CPPIZ)
+        dt <- SpPolysIZ[sbst,]
+      })
+      
+      #Create Communtiy Map
+      output$communityMap <- renderLeaflet({
+        cp <- leaflet(IZPlys()) %>%
+          addTiles() %>%
+          addPolygons(smoothFactor = 0.5, weight = 1.5, fillOpacity = 0.7,
+                  layerId = ~IZ_CODE, fillColor = ~communityPal(`rank_decs`), color = "black")
+      })
   }

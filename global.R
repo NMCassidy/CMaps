@@ -3,6 +3,7 @@ library(readr)
 library(dplyr)
 library(shiny)
 SpPolysDF<-read_rds("Shapes.rds")
+SpPolysIZ <- read_rds("IZShapes.rds")
 
 CPPdta <- SpPolysDF@data
 
