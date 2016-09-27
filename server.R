@@ -4,7 +4,7 @@ require(sp)           #To deal with shapefiles
 server <-  function(input, output, session){
     
     output$IZUI <- renderUI({
-      selectInput("IZ", h5("Select a Community"), unique(CPPdta[CPPdta$council == input$CPP, 10]))
+        selectInput("IZ", h5("Select a Community"), unique(CPPdta[CPPdta$council == input$CPP, 10]))
     })
     
     clrs<-brewer.pal(7, "RdYlGn")

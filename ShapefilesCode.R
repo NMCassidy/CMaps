@@ -2,6 +2,8 @@
 library(readr)
 library(readxl)
 library(dplyr)
+library(rgdal)
+library(dplyr)
 #read shapefiles
 SpPolysDF<-read_rds("Q:/Codes/Shiny -Leaflet/LeafletPolygons.rds")
 
@@ -26,3 +28,26 @@ SpPolysDF@data <- left_join(SpPolysDF@data, indDta[c(1,4,5,6,7,8,9)], by = c("gr
   
 #save
 saveRDS(SpPolysDF, file = "Q:/CMaps/Shapes.rds")
+
+
+## Intermediate Geography Shapes
+#Download links are available at http://sedsh127.sedsh.gov.uk/Atom_data/ScotGov/StatisticalUnits/SG_StatisticalUnits.atom.en.xml
+#download, read, sort projections
+download.file("http://sedsh127.sedsh.gov.uk/Atom_data/ScotGov/ZippedShapefiles/SG_IntermediateZoneBdry_2001.zip", "Q:/CMaps/IZBounds.zip")
+###unzipped manually
+SpPolysIZ <- readOGR(file.path("Q:", "CMaps", "IZBounds"), "SG_IntermediateZone_Bdry_2001")
+proj4string(SpPolysIZ)
+SpPolysIZ <- spTransform(SpPolysIZ, CRS("+proj=longlat +datum=WGS84 +no_defs"))
+#Read CPOP data, merge with shapes, clean the ranks into LA "sevenths" (septiles?)
+CPdta <- read_excel("Q:/CMaps/ranks for igzs.xlsx", sheet = 1)
+SpPolysIZ@data <- left_join(SpPolysIZ@data, CPdta, by = c("IZ_CODE" = "IGZ code"))
+colnames(SpPolysIZ@data)[7] <- "council"
+decs <- c()
+for(i in unique(SpPolysIZ@data$council)){
+  x <- ntile(SpPolysIZ@data[SpPolysIZ@data$council == i, 4], 7)
+  decs <- c(decs, x)
+}
+SpPolysIZ@data$rank_decs <- decs
+
+#Save 
+saveRDS(SpPolysIZ, "Q:/CMaps/IZshapes.rds")

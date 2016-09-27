@@ -1,20 +1,20 @@
 library(shinythemes)
 
-ui <- navbarPage(title = "CPOP Mapping Feature",id = "nav", theme = "bootstrap.css",
-    #CSS to make sure that there is no scroll even on smaller screens
-                  tags$head(tags$style(".leaflet{height:39vh !important;border-style: solid;border-width:1px}",
-                                       ".well {background-color:white; padding-bottom:0px; height:0vh;}",
-                                       ".row-fluid {padding-top:7vh;}",
-                                       ".span4 {display: inline-block; vertical-align: text-top}",
-                                       HTML("
+ui <- navbarPage(title = "CPOP Mapping Feature",selected = "Data Zone Level Maps",theme = "bootstrap.css",
+   tabPanel("Data Zone Level Maps", 
+            #CSS to make sure that there is no scroll even on smaller screens
+            tags$head(tags$style(".leaflet{height:39vh !important;border-style: solid;border-width:1px}",
+                                 ".well {background-color:white; padding-bottom:0px; height:0vh;}",
+                                 ".row-fluid {padding-top:7vh;}",
+                                 ".span4 {display: inline-block; vertical-align: text-top}",
+                                 HTML("
                                             h5 {
-                                            height: 1.5vh;
+                                            height: 1.3vh;
                                             margin-top:0.6vh;
                                             margin-bottom:1vh;
                                             text-align:center;
                                             font-weight: bold
-                                            }"))),   
-   tabPanel("Data Zone Level Maps", 
+                                            }"))), 
             fluidPage(
             absolutePanel(fixed = FALSE,
                            draggable = FALSE, top = "28px", left = 0, right = 0, bottom = 0,
@@ -23,7 +23,7 @@ ui <- navbarPage(title = "CPOP Mapping Feature",id = "nav", theme = "bootstrap.c
                               div(class = "row",
                                               div(class = "span4",style = "padding-right:6vh; padding-left:6vh", 
                                                   selectInput("CPP", h5("Select a CPP"), 
-                                                 c("Select a CPP", unique(CPPdta$council)), selected = "Select a CPP", width = "350px")
+                                                 unique(CPPdta$council), width = "350px")
                                                        ),
                                     div(class = "span4", style = "width: 450px",
                              uiOutput("IZUI")))
