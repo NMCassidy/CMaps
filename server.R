@@ -25,42 +25,48 @@ server <-  function(input, output, session){
        p<-leaflet(plydata())%>%
         addTiles()%>%
         addPolygons(smoothFactor = 0.5, weight = 1.5, fillOpacity = 0.7,
-                    layerId = ~group, fillColor = ~povPal(`povDecs`), color = "black")
+                    layerId = ~group, fillColor = ~povPal(`povDecs`), color = "black") %>%
+         zoomControlPosition('bottomleft')
       return(p)
     })
     output$newplot2<-renderLeaflet({
       p<-leaflet(plydata())%>%
         addTiles()%>%
         addPolygons(smoothFactor = 0.5, weight = 1.5, fillOpacity = 0.7,
-                    layerId = ~group, fillColor = ~tariffPal(`tariffDecs`),  color = "black")
+                    layerId = ~group, fillColor = ~tariffPal(`tariffDecs`),  color = "black") %>%
+        zoomControlPosition('bottomleft')
       return(p)
     })
     output$newplot3<-renderLeaflet({
       p<-leaflet(plydata())%>%
         addTiles()%>%
         addPolygons(smoothFactor = 0.5, weight = 1.5, fillOpacity = 0.7,
-                    layerId = ~group, fillColor = ~posPal(`posDecs`), color = "black")
+                    layerId = ~group, fillColor = ~posPal(`posDecs`), color = "black") %>%
+        zoomControlPosition('bottomleft')
       return(p)
     })
     output$newplot4<-renderLeaflet({
       p<-leaflet(plydata())%>%
         addTiles()%>%
         addPolygons(smoothFactor = 0.5, weight = 1.5, fillOpacity = 0.7,
-                    layerId = ~group, fillColor = ~benPal(`benDecs`), color = "black")
+                    layerId = ~group, fillColor = ~benPal(`benDecs`), color = "black") %>%
+        zoomControlPosition('bottomleft')
       return(p)
     })
     output$newplot5<-renderLeaflet({
       p<-leaflet(plydata())%>%
         addTiles()%>%
         addPolygons(smoothFactor = 0.5, weight = 1.5, fillOpacity = 0.7,
-                    layerId = ~group, fillColor = ~crimePal(`crimeDecs`), color = "black")
+                    layerId = ~group, fillColor = ~crimePal(`crimeDecs`), color = "black") %>%
+        zoomControlPosition('bottomleft')
       return(p)
     })
     output$newplot6<-renderLeaflet({
       p<-leaflet(plydata())%>%
         addTiles()%>%
         addPolygons(smoothFactor = 0.5, weight = 1.5, fillOpacity = 0.7,
-                    layerId = ~group, fillColor = ~admisPal(`admisDecs`), color = "black")
+                    layerId = ~group, fillColor = ~admisPal(`admisDecs`), color = "black") %>%
+        zoomControlPosition('bottomleft')
       return(p)
     })
     

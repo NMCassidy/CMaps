@@ -1,4 +1,5 @@
-require(leaflet)      #To make the Maps
+library(devtools)
+install_github("byzheng/leaflet")
 library(readr)
 library(dplyr)
 library(shiny)
@@ -45,4 +46,4 @@ for(i in unique(SpPolysDF@data$council)){
 }
 
 SpPolysDF@data <- cbind(SpPolysDF@data, povDecs, tariffDecs, posDecs,benDecs,crimeDecs, admisDecs)
-rm(i, povDecs, tariffDecs, posDecs,benDecs,crimeDecs, admisDecs)
+rm(i, x, povDecs, tariffDecs, posDecs,benDecs,crimeDecs, admisDecs)
