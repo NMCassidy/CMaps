@@ -3,16 +3,16 @@ library(shinythemes)
 ui <- navbarPage(title = "CPOP Mapping Feature",selected = "Data Zone Level Maps",theme = "bootstrap.css",
    tabPanel("Data Zone Level Maps", 
             #CSS to make sure that there is no scroll even on smaller screens
-            tags$head(tags$style(".leaflet{height:37vh ;border-style: solid;border-width:1px}",
+            tags$head(tags$style(".leaflet{height:38vh !important;border-style: solid;border-width:1px}",
                                  ".well {background-color:white; padding-bottom:0px; height:0vh;}",
                                  ".row-fluid {padding-top:7vh;}",
                                  ".span4 {display: inline-block; vertical-align: text-top}",
-                                 "#communityMap{height:86vh !important;border-style:solid;border-width:1px}",
+                                 "#communityMap{height:85vh !important;border-style:solid;border-width:1px}",
                                  HTML("
                                             h5 {
-                                            height: 1.3vh;
-                                            margin-top:0.6vh;
-                                            margin-bottom:1vh;
+                                            height: 18px;
+                                            margin-top:2px;
+                                            margin-bottom:0px;
                                             text-align:center;
                                             font-weight: bold
                                             }"))), 

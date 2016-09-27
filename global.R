@@ -1,10 +1,11 @@
 library(devtools)
-install_github("byzheng/leaflet")
+#Need to set up shiny apps with leaflet from github - https://support.rstudio.com/hc/en-us/articles/204536558-Enabling-use-of-private-packages-on-github-com
+library(leaflet)
 library(readr)
 library(dplyr)
 library(shiny)
 SpPolysDF<-read_rds("Shapes.rds")
-SpPolysIZ <- read_rds("IZShapes.rds")
+SpPolysIZ <- read_rds("IZshapes.rds")
 
 CPPdta <- SpPolysDF@data
 
