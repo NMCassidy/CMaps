@@ -201,7 +201,7 @@ server <-  function(input, output, session){
         dt <- SpPolysIZ[sbst,]
       })
       
-      #Create Communtiy Map
+      #Create Community Map
       output$communityMap <- renderLeaflet({
         cp <- leaflet(IZPlys()) %>%
           addTiles() %>%
@@ -209,8 +209,24 @@ server <-  function(input, output, session){
                   layerId = ~IZ_CODE, fillColor = ~communityPal(`rank_decs`), color = "black")
       })
       #Add click function
-     # showIZPopup <- function(group, lat, lng){
-    #    selectedIZ <- SpPolysIZ@data[SpPolysIZ@data$IZ_CODE = group,]
-    #    
-    #  }
+        showIZPopup <- function(group, lat, lng){
+        selectedIZ <- SpPolysIZ@data[SpPolysIZ@data$IZ_CODE == group,]
+        content <- as.character(tagList(
+          tags$h4(as.character(unique(selectedIZ$IZ_NAME))),
+          paste("Intermediate Geography Ranking:", as.character(unique(selectedIZ[8]))),
+          tags$br()
+        ))
+        leafletProxy("communityMap") %>% addPopups(lng, lat, content, layerId = group)
+        }
+        #Make popup appear and clear old popups
+        observe({
+          leafletProxy("communityMap") %>% clearPopups()
+          event <- input$communityMap_shape_click
+          if(is.null(event)){
+            return()}
+          isolate({
+            showIZPopup(event$id, event$lat, event$lng)
+          })
+          
+        })
   }
