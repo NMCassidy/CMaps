@@ -44,10 +44,12 @@ SpPolysIZ@data <- left_join(SpPolysIZ@data, CPdta, by = c("IZ_CODE" = "IGZ code"
 colnames(SpPolysIZ@data)[7] <- "council"
 decs <- c()
 for(i in unique(SpPolysIZ@data$council)){
-  x <- ntile(SpPolysIZ@data[SpPolysIZ@data$council == i, 4], 7)
+  x <- ntile(SpPolysIZ@data[SpPolysIZ@data$council == i, 8], 7)
   decs <- c(decs, x)
 }
 SpPolysIZ@data$rank_decs <- decs
+
+SpPolysIZ@data[SpPolysIZ@data$council == "Edinburgh, City of", 7] <- "Edinburgh"
 
 #Save 
 saveRDS(SpPolysIZ, "Q:/CMaps/IZshapes.rds")

@@ -208,4 +208,9 @@ server <-  function(input, output, session){
           addPolygons(smoothFactor = 0.5, weight = 1.5, fillOpacity = 0.7,
                   layerId = ~IZ_CODE, fillColor = ~communityPal(`rank_decs`), color = "black")
       })
+      #Add click function
+     # showIZPopup <- function(group, lat, lng){
+    #    selectedIZ <- SpPolysIZ@data[SpPolysIZ@data$IZ_CODE = group,]
+    #    
+    #  }
   }

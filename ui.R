@@ -7,7 +7,7 @@ ui <- navbarPage(title = "CPOP Mapping Feature",selected = "Data Zone Level Maps
                                  ".well {background-color:white; padding-bottom:0px; height:0vh;}",
                                  ".row-fluid {padding-top:7vh;}",
                                  ".span4 {display: inline-block; vertical-align: text-top}",
-                                 "#comMap{height:80vh !important;border-style:solid;border-width:1px}",
+                                 "#communityMap{height:88vh !important;border-style:solid;border-width:1px}",
                                  HTML("
                                             h5 {
                                             height: 1.3vh;
@@ -53,8 +53,8 @@ ui <- navbarPage(title = "CPOP Mapping Feature",selected = "Data Zone Level Maps
            fluidPage(
              absolutePanel(fixed = FALSE, draggable = FALSE, top = "28px", left = 0, right = 0,
                            bottom = 0, width = "100%", height = "0px", 
-                           wellPanel(div(class = "span4",selectInput("CPPIZ", h5("Select a CPP"), unique(CPPdta$council), width = "350px")))),
-           fluidRow(div(class = "row-fluid",id = "comMap",leafletOutput("communityMap")))
+                           wellPanel(div(class = "span4",style = "padding-left:6vh", selectInput("CPPIZ", h5("Select a CPP"), unique(CPPdta$council), width = "350px")))),
+           fluidRow(div(class = "row-fluid",id = "comMap", leafletOutput("communityMap")))
            ))
 
 )
