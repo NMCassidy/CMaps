@@ -6,7 +6,7 @@ ui <- navbarPage(title = "CPOP Mapping Feature",selected = "Data Zone Level Maps
             tags$head(tags$style(".leaflet{height:38vh !important;border-style: solid;border-width:1px}",
                                  ".well {background-color:white; padding-bottom:0px; height:0vh;}",
                                  ".row-fluid {padding-top:7vh;}",
-                                 ".span4 {display: inline-block; vertical-align: text-top}",
+                                 ".span4 {display: inline-block; vertical-align: text-top; width: 35vh;}",
                                  "#communityMap{height:85vh !important;border-style:solid;border-width:1px}",
                                  HTML("
                                             h5 {
@@ -23,10 +23,11 @@ ui <- navbarPage(title = "CPOP Mapping Feature",selected = "Data Zone Level Maps
                            wellPanel(
                               div(class = "row",
                                               div(class = "span4",style = "padding-right:6vh; padding-left:6vh", 
-                                                  selectInput("CPP", h5("Select a CPP"), 
-                                                 unique(CPPdta$council), width = "350px")
+                                                  selectizeInput("CPP", h5("Select a CPP"), 
+                                                 choices = unique(CPPdta$council), options = list(placeholder = "Select a CPP",
+                                                     onInitialize = I('function() { this.setValue(""); }')))
                                                        ),
-                                    div(class = "span4", style = "width: 450px",
+                                    div(class = "span4", style = "width: 45vh",
                              uiOutput("IZUI")))
                            )
              ),
