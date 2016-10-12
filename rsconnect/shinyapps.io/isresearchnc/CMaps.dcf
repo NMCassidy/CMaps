@@ -2,9 +2,15 @@ name: CMaps
 account: isresearchnc
 server: shinyapps.io
 appId: 126489
+<<<<<<< HEAD
 bundleId: 584336
 url: https://isresearchnc.shinyapps.io/CMaps/
 when: 1476265037.21826
+=======
+bundleId: 570897
+url: https://isresearchnc.shinyapps.io/CMaps/
+when: 1475068852.90807
+>>>>>>> 7e52ea77c65ca2f4063f9c878c8b62cb3e62e70c
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: datazone data for maps.xlsx|ranks for igzs.xlsx|README.md|server2.R|ShapefilesCode.R|IZBounds/SG_IntermediateZone_Bdry_2001.dbf|IZBounds/SG_IntermediateZone_Bdry_2001.prj|IZBounds/SG_IntermediateZone_Bdry_2001.sbn|IZBounds/SG_IntermediateZone_Bdry_2001.sbx|IZBounds/SG_IntermediateZone_Bdry_2001.shp|IZBounds/SG_IntermediateZone_Bdry_2001.shp.xml|IZBounds/SG_IntermediateZone_Bdry_2001.shx
