@@ -1,4 +1,4 @@
-library(devtools)
+#library(devtools)
 #Need to set up shiny apps with leaflet from github - https://support.rstudio.com/hc/en-us/articles/204536558-Enabling-use-of-private-packages-on-github-com
 library(leaflet)
 library(readr)

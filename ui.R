@@ -1,21 +1,12 @@
-library(shinythemes)
-
 ui <- navbarPage(title = "CPOP Mapping Feature",selected = "Community Planning Area",theme = "bootstrap.css",
                  tabPanel("Community Planning Area",
-                          fluidPage(
-                            absolutePanel(fixed = FALSE, draggable = FALSE, top = "28px", left = 0, right = 0,
-                                          bottom = 0, width = "100%", height = "0px", 
-                                          wellPanel(div(class = "span4",style = "padding-left:6vh", selectInput("CPPIZ", h5("Select a CPP"), unique(CPPdta$council), width = "350px")))),
-                            fluidRow(div(class = "row-fluid", leafletOutput("communityMap")))
-                          )),
-                 tabPanel("Data Zone Level Maps", 
-            #CSS to make sure that there is no scroll even on smaller screens
-            tags$head(tags$style(".leaflet{height:38vh !important;border-style: solid;border-width:1px; margin-top:1px}",
-                                 ".well {background-color:white; padding-bottom:0px; height:0vh;}",
-                                 ".row-fluid {padding-top:7vh;}",
-                                 ".span4 {display: inline-block; vertical-align: text-top; width: 35vw;}",
-                                 "#communityMap{height:85vh !important;border-style:solid;border-width:1px; padding-top:8px}",
-                                 HTML("   h5{height: 18px;
+                          #CSS to make sure that there is no scroll even on smaller screens
+                          tags$head(tags$style(".leaflet{height:38vh !important; border-style:solid; border-width:1px; margin-top:1px}",
+                                               ".well {background-color:white; padding-bottom:0px; height:0vh;}",
+                                               ".row-fluid {padding-top:7vh;}",
+                                               ".span4 {display: inline-block; vertical-align: text-top; width: 35vw;}",
+                                               "#communityMap{height:85vh !important;border-style:solid;border-width:1px; padding-top:8px}",
+                                               HTML("   h5{height: 18px;
                                             margin-top:2px;
                                             margin-bottom:0px;
                                             text-align:center;
@@ -28,6 +19,13 @@ ui <- navbarPage(title = "CPOP Mapping Feature",selected = "Community Planning A
                                             text-align:center;
                                             font-weight: bold
                                             }"))), 
+                          fluidPage(
+                            absolutePanel(fixed = FALSE, draggable = FALSE, top = "28px", left = 0, right = 0,
+                                          bottom = 0, width = "100%", height = "0px", 
+                                          wellPanel(div(class = "span4",style = "padding-left:6vh", selectInput("CPPIZ", h5("Select a CPP"), unique(CPPdta$council), width = "350px")))),
+                            fluidRow(div(class = "row-fluid", leafletOutput("communityMap")))
+                          )),
+                 tabPanel("Data Zone Level Maps", 
             fluidPage(
             absolutePanel(fixed = FALSE,
                            draggable = FALSE, top = "28px", left = 0, right = 0, bottom = 0,

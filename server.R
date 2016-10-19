@@ -1,5 +1,5 @@
 require(RColorBrewer) #For colour scheme
-require(sp)           #To deal with shapefiles
+#(sp)           #To deal with shapefiles
 
 server <-  function(input, output, session){
     
