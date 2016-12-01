@@ -92,4 +92,4 @@ shps@data[shps@data$INTZONE_NAME == "IZ Twenty Two East Lothian", 10] <- "North 
 shps@data[shps@data$INTZONE_NAME == "IZ Nineteen East Lothian", 10] <- "Dunbar West"
 shps@data[shps@data$INTZONE_NAME == "IZ Twenty East Lothian", 10] <- "Gullane and Drem"
 shps@data[shps@data$INTZONE_NAME == "IZ Twenty One East Lothian", 10] <- "North Berwick South"
-saveRDS(shps,"shapes.rds")
+saveRDS(shps,"Shapes.rds")
