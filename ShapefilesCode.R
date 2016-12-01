@@ -68,3 +68,28 @@ shps <- readRDS("IZshapes.rds")
 shps@data$IZ_NAME <- as.character(shps@data$IZ_NAME)
 shps@data[grep("IZ ",shps@data$IZ_NAME),2] <- shps@data[grep("IZ ",shps@data$IZ_NAME),6]
 saveRDS(shps,"IZshapes.rds")
+#Also need to do it for datazones
+shps <- readRDS("Shapes.rds")
+shps@data[shps@data$INTZONE_NAME == "IZ Seventeen East Lothian", 10] <- "Longniddry and Aberlady"
+shps@data[shps@data$INTZONE_NAME == "IZ One East Lothian", 10] <- "Haddington Rural"
+shps@data[shps@data$INTZONE_NAME == "IZ Two East Lothian", 10] <- "Ormiston"
+shps@data[shps@data$INTZONE_NAME == "IZ Three East Lothian", 10] <- "Whitecraig"
+shps@data[shps@data$INTZONE_NAME == "IZ Four East Lothian", 10] <- "Tranent South"
+shps@data[shps@data$INTZONE_NAME == "IZ Five East Lothian", 10] <- "Musselburgh South"
+shps@data[shps@data$INTZONE_NAME == "IZ Six East Lothian", 10] <- "Musselburgh West"
+shps@data[shps@data$INTZONE_NAME == "IZ Seven East Lothian", 10] <- "Musselburgh East"
+shps@data[shps@data$INTZONE_NAME == "IZ Eight East Lothian", 10] <- "Tranent North"
+shps@data[shps@data$INTZONE_NAME == "IZ Nine East Lothian", 10] <- "Musselburgh North"
+shps@data[shps@data$INTZONE_NAME == "IZ Ten East Lothian", 10] <- "Wallyford"
+shps@data[shps@data$INTZONE_NAME == "IZ Eleven East Lothian", 10] <- "Haddington South"
+shps@data[shps@data$INTZONE_NAME == "IZ Twelve East Lothian", 10] <- "Haddington North"
+shps@data[shps@data$INTZONE_NAME == "IZ Thirteen East Lothian", 10] <- "Prestonpans South"
+shps@data[shps@data$INTZONE_NAME == "IZ Fourteen East Lothian", 10] <- "Prestonpans North"
+shps@data[shps@data$INTZONE_NAME == "IZ Fifteen East Lothian", 10] <- "East Linton"
+shps@data[shps@data$INTZONE_NAME == "IZ Sixteen East Lothian", 10] <- "Cockenzie and Port Seton"
+shps@data[shps@data$INTZONE_NAME == "IZ Eighteen East Lothian", 10] <- "Dunbar East"
+shps@data[shps@data$INTZONE_NAME == "IZ Twenty Two East Lothian", 10] <- "North Berwick North"
+shps@data[shps@data$INTZONE_NAME == "IZ Nineteen East Lothian", 10] <- "Dunbar West"
+shps@data[shps@data$INTZONE_NAME == "IZ Twenty East Lothian", 10] <- "Gullane and Drem"
+shps@data[shps@data$INTZONE_NAME == "IZ Twenty One East Lothian", 10] <- "North Berwick South"
+saveRDS(shps,"shapes.rds")
