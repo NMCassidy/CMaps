@@ -62,3 +62,9 @@ SpPolysIZ@data[SpPolysIZ@data$council == "Edinburgh, City of", 7] <- "Edinburgh"
 
 #Save 
 saveRDS(SpPolysIZ, "Q:/CMaps/IZshapes.rds")
+
+##Just doing this here to be lazy
+shps <- readRDS("IZshapes.rds")
+shps@data$IZ_NAME <- as.character(shps@data$IZ_NAME)
+shps@data[grep("IZ ",shps@data$IZ_NAME),2] <- shps@data[grep("IZ ",shps@data$IZ_NAME),6]
+saveRDS(shps,"IZshapes.rds")
